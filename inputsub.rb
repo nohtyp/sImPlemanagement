@@ -1,6 +1,7 @@
 !#/usr/bin/env ruby
 #'1' * 8 + '.' + '1' * 8 + '.' + '1' * 7 + '0' + '.' + '0' * 8
 
+
 def convert_to_bin(num)
 
     groupofbits = num / 8
@@ -35,9 +36,13 @@ def find_my_networks(network)
         print i % output_networks == 0 ? "Mynetworks #{i} \n" : nil
     end
    
-    
-    
-    
+end
+
+
+def find_my_hosts(hosts)
+
+
+
 end
 
 
