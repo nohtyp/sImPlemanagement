@@ -46,9 +46,12 @@ def networks_hosts(network)
    
 end
 
-
-print "Subnet: "
+print "IP address/subnet: "
 mysubnet = gets.chomp
 
+myinput = mysubnet.split('/')
 
-networks_hosts(convert_to_bin(mysubnet.to_i))
+#print myinput[1]
+
+networks_hosts(convert_to_bin(myinput[1].to_i))
+#networks_hosts(convert_to_bin(mysubnet.to_i))
