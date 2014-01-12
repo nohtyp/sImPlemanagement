@@ -1,0 +1,12 @@
+input number
+if number is less than 8 output "Incorrect subnet number" and exit
+
+if number is divisible by 8 and the remainder is equal to 0
+    then output even and divide the number by 8 and assign value to groupsofones
+    
+else if remainder of number divided by 8 is > 0
+    then divide number by 8 and assign value to groupsofones
+
+if groupofones is equal to 4 then output 4 sets of ones separated by a decimal (.)
+
+
