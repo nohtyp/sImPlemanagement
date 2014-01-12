@@ -32,7 +32,7 @@ def find_my_networks(network)
     #Add check for if available_networks is 1 and if so this is a specific ip address
 
     for i in (0..256)
-        print i % available_networks == 0 ? "Mynetworks #{i} \n" : nil
+        print i % output_networks == 0 ? "Mynetworks #{i} \n" : nil
     end
    
     
