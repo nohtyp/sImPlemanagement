@@ -29,22 +29,19 @@ class IP < Network
     
   end
   
-  def networks_hosts
+  def networks
     
       define_network = @mybinary.rindex('1')
-      define_hosts = @mybinary.scan('0').length
       mynet = (define_network + 1) % 8
-      myhosts = (2 ** define_hosts) - 2 < 1 ? 1 : (2 ** define_hosts) - 2
   
       mynetworks =  mynet == 0 ? 8 : mynet
       #puts mynetworks
-      #puts define_hosts
       output_networks = 2 ** (8 - mynetworks)
       available_networks = output_networks == 1 ? 1 : (256 / output_networks)
   
   
       #puts output_networks
-      print "You have #{available_networks} networks available with a total of #{myhosts} valid ip's"
+      print "You have #{available_networks} networks available"
   
       #Add check for if available_networks is 1 and if so this is a specific ip address
   
@@ -54,9 +51,23 @@ class IP < Network
 
    end
 
+
+
+  def hosts
+
+    define_hosts = @mybinary.scan('0').length
+    myhosts = (2 ** define_hosts) - 2 < 1 ? 1 : (2 ** define_hosts) - 2
+    
+    #puts myhosts
+    print "You have #{myhosts} valid ip's"
+  
+  end
+
+
 end
 
 
-foster = IP.new('192.168.1.1', 24)
-#puts foster.convert_to_bin
-#puts foster.networks_hosts
+foster = IP.new('192.168.1.1', 22)
+puts foster.convert_to_bin
+puts foster.networks
+puts foster.hosts
