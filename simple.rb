@@ -26,6 +26,7 @@ class IP < Network
     #puts
             
     @mybinary = '1' * numberofones + '0' * zerosleft
+    return
     
   end
   
@@ -35,23 +36,12 @@ class IP < Network
       mynet = (define_network + 1) % 8
   
       mynetworks =  mynet == 0 ? 8 : mynet
-      #puts mynetworks
       output_networks = 2 ** (8 - mynetworks)
       available_networks = output_networks == 1 ? 1 : (256 / output_networks)
   
-  
-      #puts output_networks
       print "You have #{available_networks} networks available"
   
-      #Add check for if available_networks is 1 and if so this is a specific ip address
-  
-      #for i in (0..256)
-      #    print i % output_networks == 0 ? "Mynetworks #{i} \n" : nil
-      #end
-
    end
-
-
 
   def hosts
 
@@ -68,6 +58,6 @@ end
 
 
 foster = IP.new('192.168.1.1', 22)
-puts foster.convert_to_bin
+print foster.convert_to_bin
 puts foster.networks
 puts foster.hosts
