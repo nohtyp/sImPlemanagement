@@ -6,27 +6,22 @@ end
 
 class IP < Network
 
-  def initialize(myip, mymask) 
-      @myip   = myip
-      @mymask = mymask
-  end
-  
-  def convert_to_bin 
+  def subnet_to_bin(mymask)
       
-     if (@mymask < 8) || (@mymask > 32)
-        puts "Invalid subnet range #{@mymask}."
+     if (mymask < 8) || (mymask > 32)
+        puts "Invalid subnet range #{mymask}."
         exit
     end
 
-    groupofbits = @mymask / 8
-    numberofones = groupofbits * 8 + (@mymask % 8)
+    groupofbits = mymask / 8
+    numberofones = groupofbits * 8 + (mymask % 8)
     zerosleft = 32 - numberofones
     
     #print "Groups of 8 bits #{groupofbits}, How many number of ones #{numberofones}, My zero's left #{zerosleft}"
     #puts
             
     @mybinary = '1' * numberofones + '0' * zerosleft
-    return
+    #return
     
   end
   
@@ -57,7 +52,7 @@ class IP < Network
 end
 
 
-foster = IP.new('192.168.1.1', 22)
-print foster.convert_to_bin
-puts foster.networks
-puts foster.hosts
+foster = IP.new
+puts foster.subnet_to_bin()
+#puts foster.networks
+#puts foster.hosts
