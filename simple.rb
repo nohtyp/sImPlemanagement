@@ -1,4 +1,4 @@
-!#/usr/bin/env ruby
+#!/usr/bin/env ruby
 
 class Network
 
@@ -53,6 +53,7 @@ end
 
 
 foster = IP.new
-puts foster.subnet_to_bin()
-#puts foster.networks
-#puts foster.hosts
+number = ARGV[0].to_i
+puts foster.subnet_to_bin(number)
+puts foster.networks
+puts foster.hosts
