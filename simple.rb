@@ -6,15 +6,15 @@ end
 
 class IP < Network
 
-  def subnet_to_bin(mymask)
+  def subnet_to_bin
       
-     if (mymask < 8) || (mymask > 32)
-        puts "Invalid subnet range #{mymask}."
+     if (@mymask < 8) || (@mymask > 32)
+        puts "Invalid subnet range #{@mymask}."
         exit
     end
 
-    groupofbits = mymask / 8
-    numberofones = groupofbits * 8 + (mymask % 8)
+    groupofbits = @mymask / 8
+    numberofones = groupofbits * 8 + (@mymask % 8)
     zerosleft = 32 - numberofones
     
     #print "Groups of 8 bits #{groupofbits}, How many number of ones #{numberofones}, My zero's left #{zerosleft}"
@@ -48,12 +48,35 @@ class IP < Network
   
   end
 
+  def verify_single_ip(myip)
+
+   aIP = myip.split(/\D/)
+   
+   if aIP.length >= 4 && aIP.length <= 5
+       @mymask = aIP[4].to_i
+       @myip   = aIP[0..3]
+       return
+   else
+       puts "You didin't provided a valid ip"
+   end
+
+  end
+
+  def ip_to_bin
+      
+   convert_ip = @myip
+    
+  end
+     
+
 
 end
 
 
 foster = IP.new
-number = ARGV[0].to_i
-puts foster.subnet_to_bin(number)
-puts foster.networks
-puts foster.hosts
+number = ARGV[0]
+print foster.verify_single_ip(number)
+puts foster.subnet_to_bin
+print foster.ip_to_bin
+#puts foster.networks
+#puts foster.hosts
