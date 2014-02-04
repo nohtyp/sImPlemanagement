@@ -65,10 +65,19 @@ class IP < Network
   def ip_to_bin
       
    convert_ip = @myip
-    
+   convert_ip.each do |mynum|
+      mynum.class
+      convert = mynum.to_s(2)
+      if convert.length != 8
+          leftbits = 8 - convert.length
+          puts newconvert = '0' * leftbits + convert
+      else
+          puts convert
+      end
+   end
+          
   end
-     
-
+    
 
 end
 
