@@ -63,21 +63,32 @@ class IP < Network
   end
 
   def ip_to_bin
-      
-   convert_ip = @myip
-   convert_ip.each do |mynum|
-      mynum.class
-      convert = mynum.to_s(2)
-      if convert.length != 8
-          leftbits = 8 - convert.length
-          puts newconvert = '0' * leftbits + convert
-      else
-          puts convert
-      end
-   end
-          
-  end
+ 
+     convert_ip = @myip
+
+
+     @myconvip = Array.new 
+     convert_ip.each do |mynum|
     
+       @myconvip.push(convert_to_bin(mynum.to_i))
+        
+    end
+
+        puts @myconvip.join('.')
+
+  end
+
+  def convert_to_bin(cNUM)
+  
+       convert = cNUM.to_s(2)
+       if convert.length != 8
+           leftbits = 8 - convert.length
+          return newconvert =  '0' * leftbits + convert
+       else
+          return convert
+       end
+  end
+
 
 end
 
@@ -86,6 +97,6 @@ foster = IP.new
 number = ARGV[0]
 print foster.verify_single_ip(number)
 puts foster.subnet_to_bin
-print foster.ip_to_bin
 #puts foster.networks
 #puts foster.hosts
+print foster.ip_to_bin
