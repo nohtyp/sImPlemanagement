@@ -9,27 +9,23 @@ class IP < Network
    def initialize(myip, network)
 
            @myip   = myip.split('.')
-           @mymask = network.to_i
+           @mymask = network
 
    end
   
 
-   def subnet_to_bin
+   def networks 
       
-         if (@mymask < 8) || (@mymask > 32)
+         if (@mymask.to_i < 8) || (@mymask.to_i > 32) || (@mymask.split(/\D/).length > 1)
             puts "Invalid subnet range #{@mymask}."
             exit
          end
 
-        groupofbits = @mymask / 8
-        numberofones = groupofbits * 8 + (@mymask % 8)
+        groupofbits = @mymask.to_i / 8
+        numberofones = groupofbits * 8 + (@mymask.to_i % 8)
         zerosleft = 32 - numberofones
     
         @mybinary = '1' * numberofones + '0' * zerosleft
-    
-   end
-  
-   def networks
     
         define_network = @mybinary.rindex('1')
         mynet = (define_network + 1) % 8
@@ -85,6 +81,6 @@ end
 
 foster = IP.new('192.168.23.192', '24')
 #puts foster.subnet_to_bin
-#puts foster.networks -----> broken
-#puts foster.hosts -----> broken
+puts foster.networks 
+puts foster.hosts
 print foster.ip_to_bin
