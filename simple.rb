@@ -48,17 +48,10 @@ class IP < Network
   
   end
 
-  def verify_single_ip(myip)
+  def initialize(myip, network)
 
-       aIP = myip.split(/\D/)
-   
-       if aIP.length >= 4 && aIP.length <= 5
-           @mymask = aIP[4].to_i
-           @myip   = aIP[0..3]
-         return
-       else
-           puts "You didin't provided a valid ip"
-       end
+           @myip   = myip.split('.')
+           @mymask = network.to_i
 
   end
 
@@ -74,7 +67,7 @@ class IP < Network
         
      end
 
-        puts @myconvip.join('.')
+    puts @myconvip.join('.')
 
   end
 
@@ -93,10 +86,8 @@ class IP < Network
 end
 
 
-foster = IP.new
-number = ARGV[0]
-print foster.verify_single_ip(number)
-puts foster.subnet_to_bin
-#puts foster.networks
-#puts foster.hosts
+foster = IP.new('192.168.23.192', '24')
+#puts foster.subnet_to_bin
+#puts foster.networks -----> broken
+#puts foster.hosts -----> broken
 print foster.ip_to_bin
