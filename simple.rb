@@ -50,21 +50,21 @@ class IP < Network
 
   def verify_single_ip(myip)
 
-   aIP = myip.split(/\D/)
+       aIP = myip.split(/\D/)
    
-   if aIP.length >= 4 && aIP.length <= 5
-       @mymask = aIP[4].to_i
-       @myip   = aIP[0..3]
-       return
-   else
-       puts "You didin't provided a valid ip"
-   end
+       if aIP.length >= 4 && aIP.length <= 5
+           @mymask = aIP[4].to_i
+           @myip   = aIP[0..3]
+         return
+       else
+           puts "You didin't provided a valid ip"
+       end
 
   end
 
   def ip_to_bin
  
-     convert_ip = @myip
+      convert_ip = @myip
 
 
      @myconvip = Array.new 
@@ -72,7 +72,7 @@ class IP < Network
     
        @myconvip.push(convert_to_bin(mynum.to_i))
         
-    end
+     end
 
         puts @myconvip.join('.')
 
@@ -81,12 +81,12 @@ class IP < Network
   def convert_to_bin(cNUM)
   
        convert = cNUM.to_s(2)
-       if convert.length != 8
-           leftbits = 8 - convert.length
-          return newconvert =  '0' * leftbits + convert
-       else
-          return convert
-       end
+         if convert.length != 8
+            leftbits = 8 - convert.length
+           return newconvert =  '0' * leftbits + convert
+        else
+           return convert
+        end
   end
 
 
