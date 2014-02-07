@@ -40,7 +40,7 @@ class IP < Network
 
    def hosts
 
-        define_hosts = @mybinary.scan('0').length
+        define_hosts = 32 - @mymask.to_i
         myhosts = (2 ** define_hosts) - 2 < 1 ? 1 : (2 ** define_hosts) - 2
     
         print "You have #{myhosts} valid ip's"
@@ -79,8 +79,7 @@ class IP < Network
 end
 
 
-foster = IP.new('192.168.23.192', '24')
-#puts foster.subnet_to_bin
+foster = IP.new('192.168.23.192', '32')
 puts foster.networks 
 puts foster.hosts
 print foster.ip_to_bin
