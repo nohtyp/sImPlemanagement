@@ -34,7 +34,7 @@ class IP < Network
         output_networks = 2 ** (8 - mynetworks)
         available_networks = output_networks == 1 ? 1 : (256 / output_networks)
   
-        print "You have #{available_networks} networks available"
+        #print "You have #{available_networks} networks available"
   
    end
 
@@ -43,7 +43,7 @@ class IP < Network
         define_hosts = 32 - @mymask.to_i
         myhosts = (2 ** define_hosts) - 2 < 1 ? 1 : (2 ** define_hosts) - 2
     
-        print "You have #{myhosts} valid ip's"
+        #print "You have #{myhosts} valid ip's"
   
    end
 
@@ -51,6 +51,6 @@ class IP < Network
 end
 
 
-foster = IP.new('192.168.23.192', '32')
-puts foster.networks 
-puts foster.hosts
+foster = IP.new('192.168.23.192', '22')
+puts "There are #{foster.networks} networks"
+puts "There are #{foster.hosts} hosts on each network"
