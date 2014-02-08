@@ -48,38 +48,9 @@ class IP < Network
    end
 
 
-   def ip_to_bin
- 
-       convert_ip = @myip
-
-
-       @myconvip = Array.new 
-       convert_ip.each do |mynum|
-    
-          @myconvip.push(convert_to_bin(mynum.to_i))
-        
-       end
-
-       puts @myconvip.join('.')
-
-   end
-
-  def convert_to_bin(cNUM)
-  
-        convert = cNUM.to_s(2)
-         if convert.length != 8
-             leftbits = 8 - convert.length
-            return newconvert =  '0' * leftbits + convert
-        else
-            return convert
-        end
-  end
-
-
 end
 
 
 foster = IP.new('192.168.23.192', '32')
 puts foster.networks 
 puts foster.hosts
-print foster.ip_to_bin
