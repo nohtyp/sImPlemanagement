@@ -10,7 +10,6 @@ class IP < Network
 
            @myip   = myip.split('.')
            @mymask = network
-
    end
   
 
@@ -34,16 +33,12 @@ class IP < Network
         output_networks = 2 ** (8 - mynetworks)
         available_networks = output_networks == 1 ? 1 : (256 / output_networks)
   
-        #print "You have #{available_networks} networks available"
-  
    end
 
    def hosts
 
         define_hosts = 32 - @mymask.to_i
         myhosts = (2 ** define_hosts) - 2 < 1 ? 1 : (2 ** define_hosts) - 2
-    
-        #print "You have #{myhosts} valid ip's"
   
    end
 
