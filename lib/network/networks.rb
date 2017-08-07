@@ -1,16 +1,4 @@
-#!/usr/bin/env ruby
-
-class Network
-
-end
-
-class IP < Network
-
-  def initialize(myip, network)
-    @myip   = myip.split('.')
-    @mymask = network
-  end
-
+module Networks
   def networks 
     if (@mymask.to_i < 8) || (@mymask.to_i > 32) || (@mymask.split(/\D/).length > 1)
       puts "Invalid subnet range #{@mymask}."
@@ -31,15 +19,6 @@ class IP < Network
       available_networks = output_networks == 1 ? 1 : (256 / output_networks)
   
   end
-
-  def hosts
-    define_hosts = 32 - @mymask.to_i
-    myhosts = (2 ** define_hosts) - 2 < 1 ? 1 : (2 ** define_hosts) - 2
-  
-  end
 end
 
-
-foster = IP.new('192.168.23.192', '10')
-puts "There are #{foster.networks} networks"
-puts "There are #{foster.hosts} hosts on each network"
+  
